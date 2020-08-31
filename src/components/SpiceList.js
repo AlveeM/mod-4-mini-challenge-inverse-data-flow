@@ -17,10 +17,22 @@ class SpiceList extends React.Component {
       ))
   }
 
+  updateSearch = (searchTerm) => {
+    this.setState({ search: searchTerm })
+  }
+
+  toggleFourStarOnly = () => {
+    this.setState({ fourStarOnly: !this.state.fourStarOnly })
+  }
+
   render() {
     return (
       <section className="spice-list">
-        <Filter search={this.state.search} fourStarOnly={this.state.fourStarOnly} />
+        <Filter 
+          search={this.state.search} 
+          updateSearch={this.updateSearch} 
+          fourStarOnly={this.state.fourStarOnly} 
+          toggleFourStarOnly={this.toggleFourStarOnly} />
         {this.renderSpices()}
       </section>
     )

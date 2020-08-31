@@ -1,6 +1,13 @@
 import React from 'react'
 
 class Filter extends React.Component {
+  handleOnSearchChange = (e) => {
+    this.props.updateSearch(e.target.value);
+  }
+
+  handleOnCheckedToggle = (_) => {
+    this.props.toggleFourStarOnly()
+  }
 
   render() {
     return (
@@ -13,14 +20,14 @@ class Filter extends React.Component {
               type="text"
               placeholder="Search By Tasting Notes..."
               value={this.props.search}
-              onChange={e => console.log(e.target.value) /* TODO: update search state in parent component */}
+              onChange={this.handleOnSearchChange} 
             />
           </div>
           <label>
             4 Star Only <input
               type="checkbox"
               value={this.props.fourStarOnly}
-              onChange={e => console.log(e.target.checked) /* TODO: update fourStarOnly state in parent component */}
+              onChange={this.handleOnCheckedToggle}
             />
           </label>
         </div>
